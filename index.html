@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>trivia</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="engine.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="main.css" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h1>Critérios de Framinghan</h1>
+          <hr>
+          <div class="header">
+             <span id="timer"></span>
+          </div>
+          <div id="playground">
+            <p>O seguinte sinal/sintoma, a quais critérios pertence?</p>
+            <p id='element-to-show'></p>
+            <button class='choose-answer btn btn-default btn-lg'>maiores</button>
+            <button class='choose-answer btn btn-default btn-lg'>menores</button>
+          </div>
+          <div id="results">
+            <h3>Resultados</h3>
+            <p id="score"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
