@@ -22,7 +22,8 @@ var triviaObject = {
 function playGame() {
   var timer;
   var points = 0;
-  var totalElements = triviaObject.maiores.length + triviaObject.menores.length;
+  var elements = triviaObject.maiores.concat(triviaObject.menores);
+  var totalElements = elements.length
   var showedElements = [];
   
   function init() {
@@ -56,7 +57,6 @@ function playGame() {
        startTimer(5);
        var elementToShow;
        function chooseElement() {
-         var elements = triviaObject.maiores.concat(triviaObject.menores);
          elementToShow = elements[generateRandNumber(elements.length) - 1];
        }
        chooseElement()
