@@ -79,16 +79,18 @@ function trivia() {
   function showQuestion() {
     startTimer(timeLimit);
     var subElementToShow;
+    
     function chooseSubElement() {
-     subElementToShow = subElements[generateRandNumber(subElements.length) - 1];
+      subElementToShow = subElements[generateRandNumber(subElements.length) - 1];
     }
+    
     chooseSubElement()
+    
     while (showedSubElements.indexOf(subElementToShow) != -1) {
-     chooseSubElement();
+      chooseSubElement();
     }
-    if (showedSubElements.indexOf(subElementToShow) == -1) {
-     showedSubElements.push(subElementToShow);
-    };
+    
+    showedSubElements.push(subElementToShow);
     $("#element-to-show").text(subElementToShow);
   }
   
