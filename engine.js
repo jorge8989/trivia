@@ -56,8 +56,8 @@ function trivia() {
     clearInterval(timer)
     var secondsPassed = 0;
     function countDown() {
-    secondsPassed++
-    $("#timer").text(limit - secondsPassed);
+      secondsPassed++
+      $("#timer").text(limit - secondsPassed);
       if (secondsPassed == limit) {
         clearInterval(timer);
         nextQuestion();
@@ -110,6 +110,7 @@ function trivia() {
       .indexOf(showedSubElements[showedSubElements.length - 1]) != -1) {
       points++;
     }
+    nextQuestion();
   }
      
   function nextQuestion() {
@@ -131,7 +132,6 @@ function trivia() {
   function handleEvents() {
     $(".choose-answer").on("click", function() {
       analizeAnswer($(this).html());
-      nextQuestion();
     });
   }   
   
@@ -139,6 +139,6 @@ function trivia() {
        
 }
 
-$(function() {
-  var myTrivia = new trivia();
+$(function() { 
+  trivia() 
 })
