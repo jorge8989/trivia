@@ -1,37 +1,9 @@
-var triviaObject = 
-  { title: 'Critérios de Framinghan',
-    question: 'O seguinte sinal/sintoma, a quais critérios pertence?',
-    elements: [
-      { name: 'maiores',
-        sub_elements: [
-        'Edema agudo de pulmão',
-        'Disneia paroxística noturna',
-        'Cardiomegalia',
-        'Ingurgitação jugular',
-        'Refluxo hepatojugular',
-        'B3 (terceira bulha)',
-        'PVC > 16',
-        'Perda de > 4,5 kg após o tratamento'
-      ]},
-      { name: 'menores',
-        sub_elements: [
-        'Edema bimaleolar',
-        'Hepatomegalia',
-        'Disneia aos esforços',
-        'Derrame pleural',
-        'FC > 120',
-        'Tosse noturna'
-        ]
-      }
-    ],
-    time_limit: 5
-  }
-    
-function trivia() {
+
+function trivia(data) {
   var timer;
   var points = 0;
-  var elements = triviaObject.elements;
-  var timeLimit = triviaObject.time_limit;
+  var elements = data.elements;
+  var timeLimit = data.time_limit;
   var subElements = []
   elements.forEach(function(element) {
     subElements = subElements.concat(element.sub_elements)
@@ -70,11 +42,11 @@ function trivia() {
   }
   
   function putTitleAndQuestion() {
-    $("#game-title").text(triviaObject.title)
-    $("#game-question").text(triviaObject.question)
+    $("#game-title").text(data.title)
+    $("#game-question").text(data.question)
   }  
   function renderButtons() {
-    $("#buttons-container").html(_buttons_tpl(triviaObject))
+    $("#buttons-container").html(_buttons_tpl(data))
   }
   function showQuestion() {
     startTimer(timeLimit);
@@ -91,7 +63,7 @@ function trivia() {
     }
     
     showedSubElements.push(subElementToShow);
-    $("#element-to-show").text(subElementToShow);
+    $("#element-to-show").text(subElementToShow.content);
   }
   
   function find_element_by_name(name) {
@@ -140,5 +112,9 @@ function trivia() {
 }
 
 $(function() { 
-  trivia() 
+  $.ajax({
+    url: 'json.txt',
+    dataType: 'json',
+    success: trivia 
+  })
 })
